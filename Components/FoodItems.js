@@ -1,19 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View , Image} from 'react-native';
+import { StyleSheet, Text, View , Image , TouchableOpacity} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 
 export default function FoodItems({image, name, price, detail}) {
+    const navigation = useNavigation();
  
 
   return (
       
-    <View style={{margin: 8
-    }}>
-     
+    <TouchableOpacity style={{margin: 8 }}
+    onPress={() => navigation.navigate("Detail", {image, name, price, detail})}>  
     <Image
-    
-
     style={styles.image}
     source={{uri: image}}
     
@@ -24,7 +23,7 @@ export default function FoodItems({image, name, price, detail}) {
         <Text>{price}</Text>
     </View>
     
-    </View>
+    </TouchableOpacity>
   );
 }
 
